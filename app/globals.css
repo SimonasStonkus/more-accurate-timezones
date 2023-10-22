@@ -16,7 +16,7 @@
 .background::before {
   z-index: -1;
   content: "";
-  inset: -75%;
+  inset: -100%;
   position: absolute;
   background-image: conic-gradient(
     rgb(35, 213, 171) 0deg,
@@ -28,6 +28,12 @@
     rgb(35, 213, 171) 360deg
   );
   animation: Rotate 15s linear infinite;
+}
+.About {
+  display: flex;
+  position: absolute;
+  left: 5px;
+  top: 5px;
 }
 .box {
   border-radius: 10px;

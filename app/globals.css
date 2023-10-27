@@ -46,6 +46,18 @@
   padding: 20px;
   text-align: center;
 }
+.biggerBox {
+  width: 65vw;
+  border-radius: 10px;
+  background: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  padding: 20px;
+  text-align: center;
+}
 
 @keyframes Rotate {
   0% {

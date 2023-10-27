@@ -20,20 +20,20 @@ export default function Page() {
         console.log(position.coords.longitude);
         setShowMe(true);
         if (position.coords.longitude < 0) {
-          setLongitude((position.coords.longitude * 240).toFixed(6));
+          setLongitude((position.coords.longitude * 240).toFixed(3));
           setLongitudeMinutes(
-            ((position.coords.longitude * 240) / 60).toFixed(6)
+            ((position.coords.longitude * 240) / 60).toFixed(3)
           );
           setLongitudeHours(
-            ((position.coords.longitude * 240) / 60 / 60).toFixed(6)
+            ((position.coords.longitude * 240) / 60 / 60).toFixed(3)
           );
         } else {
-          setLongitude("+" + (position.coords.longitude * 240).toFixed(6));
+          setLongitude("+" + (position.coords.longitude * 240).toFixed(3));
           setLongitudeMinutes(
-            "+" + ((position.coords.longitude * 240) / 60).toFixed(6)
+            "+" + ((position.coords.longitude * 240) / 60).toFixed(3)
           );
           setLongitudeHours(
-            "+" + ((position.coords.longitude * 240) / 60 / 60).toFixed(6)
+            "+" + ((position.coords.longitude * 240) / 60 / 60).toFixed(3)
           );
         }
       });

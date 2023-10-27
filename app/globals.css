@@ -47,7 +47,9 @@
   text-align: center;
 }
 .biggerBox {
-  width: 65vw;
+  width: 100%;
+  min-width: 65vw;
+  max-width: 500px;
   border-radius: 10px;
   background: white;
   position: absolute;
@@ -66,4 +68,11 @@
   100% {
     transform: rotate(360deg);
   }
+}
+.score-transition span {
+  transition: color 1s ease-in-out;
+}
+
+.score-transition.changed span {
+  color: green;
 }

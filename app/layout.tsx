@@ -22,7 +22,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} inter-tnum`}>
         <MantineProvider>{children}</MantineProvider>
         <Analytics />
       </body>

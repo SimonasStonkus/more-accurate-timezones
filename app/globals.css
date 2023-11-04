@@ -1,3 +1,7 @@
+.inter-tnum {
+  font-feature-settings: "tnum";
+}
+
 .container {
   display: flex;
   height: 100vh;

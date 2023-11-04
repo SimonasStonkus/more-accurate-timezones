@@ -35,6 +35,12 @@
   left: 5px;
   top: 5px;
 }
+.Game {
+  display: flex;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
 .box {
   border-radius: 10px;
   background: white;

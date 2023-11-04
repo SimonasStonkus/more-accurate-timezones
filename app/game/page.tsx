@@ -2,11 +2,14 @@
 import { useState, useEffect } from "react";
 import { Slider, Button } from "@mantine/core";
 import data from "./../api/data/world_cities_list.json";
+import Link from "next/link";
+
 export default function Page() {
   const [selectedTime, setSelectedTime] = useState(0);
   const [randomCity, setRandomCity] = useState(String);
   const [score, setScore] = useState(0);
   const [prevScore, setPrevScore] = useState<number>(0);
+  //TODO simplify this into a single state
   const [showMe, setShowMe] = useState(Boolean);
   const [hideMe, setHideMe] = useState(Boolean);
   const [showResult, setShowResult] = useState(Boolean);
@@ -23,18 +26,19 @@ export default function Page() {
     setScore(0);
     setPrevScore(0);
   }
+
   function endGame() {
     setShowMe(false);
     setShowResult(true);
   }
+
   function getRandomCity() {
     setPrevScore(score);
-    // @ts-ignore
-    let randomCityTime = data[0][randomCity] * 240;
-    let maxScore = 1000;
-    let maxDist = 14400;
-    let minDist = 1800;
-    let timeDelta = Math.abs(randomCityTime - selectedTime);
+    const randomCityTime = data[0][randomCity as keyof (typeof data)[0]] * 240;
+    const maxScore = 1000;
+    const maxDist = 14400;
+    const minDist = 1800;
+    const timeDelta = Math.abs(randomCityTime - selectedTime);
     if (timeDelta < minDist) {
       setScore(score + 1000);
     } else if (timeDelta > maxDist) {
@@ -52,6 +56,7 @@ export default function Page() {
     setRandomCity(cities[Math.floor(Math.random() * cities.length)]);
     setScoreChanged(true);
   }
+
   useEffect(() => {
     if (scoreChanged) {
       setTimeout(() => {
@@ -59,9 +64,16 @@ export default function Page() {
       }, 500);
     }
   }, [scoreChanged]);
+  //TODO: add mid round score display
   return (
     <div className="container">
       <div className="background" />
+      <div className="Game">
+        <Link href="/">
+          {" "}
+          <Button color="orange">Back to main</Button>{" "}
+        </Link>
+      </div>
       <div className="biggerBox" style={{ display: hideMe ? "none" : "block" }}>
         <h1> Guess the timezone!</h1>
         <Button onClick={beginGame}>Start Game</Button>

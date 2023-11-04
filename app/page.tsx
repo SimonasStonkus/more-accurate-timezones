@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal, Button } from "@mantine/core";
+import Link from "next/link";
+
 export default function Page() {
   const [longitude, setLongitude] = useState(String);
   const [longitudeMinutes, setLongitudeMinutes] = useState(String);
@@ -48,6 +50,11 @@ export default function Page() {
           About
         </Button>
       </div>
+      <div className="Game">
+        <Link href="/game">
+          <Button color="orange">Try the game!</Button>
+        </Link>
+      </div>
       <Modal
         opened={opened}
         onClose={close}
@@ -66,7 +73,7 @@ export default function Page() {
         <h2> The how </h2>
         <h3>
           Built using next.js and the inbuilt navigator.geolocation API, buttons
-          from Mantine, hosted on Vercel
+          from Mantine, favicon from icons8 hosted on Vercel
         </h3>
         <h2> The who </h2>
         <h3>

@@ -4,7 +4,6 @@ import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

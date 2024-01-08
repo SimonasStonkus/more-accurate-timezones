@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal, Button } from "@mantine/core";
 import Link from "next/link";
+import ClockBackground from "./components/ClockBackground";
 
 export default function Page() {
   const [longitude, setLongitude] = useState(String);
@@ -44,7 +45,7 @@ export default function Page() {
   const [opened, { open, close }] = useDisclosure(false);
   return (
     <div className="container">
-      <div className="background" />
+      <ClockBackground />
       <div className="About">
         <Button onClick={open} color="orange">
           About
@@ -67,17 +68,27 @@ export default function Page() {
           Everyone knows that working with timezones is frustrating. From
           scheduling meetings, to figuring out when your flight lands, to
           programming, the arbitrary lines chosen by governments cause headaches
-          for everyone. As such I propose a new paradigm for timezones, ones
-          calculated based on your longitudinal position.
+          for everyone.
+          <br />
+          I mean does it realy make sense that Nepal is a half hour ahead of
+          India, despite being at the same-ish longitude? Or that the Spanish
+          government decided that they will be in GMT+1, despite most of the
+          country lying west of Greenwich?
+          <br />
+          It is hard to think of a timezone decision made by a government that
+          makes sense, and so, I propose a new paradigm for timezones, ones
+          calculated entirely based on your longitudinal position.
         </h3>
         <h2> The how </h2>
         <h3>
-          Built using next.js and the inbuilt navigator.geolocation API, buttons
-          from Mantine, favicon from icons8 hosted on Vercel
+          Built using Next.js and the inbuilt navigator.geolocation API, buttons
+          from Mantine, favicon from icons8, hosted on Vercel
         </h3>
         <h2> The who </h2>
         <h3>
-          I am Simonas Stonkus, an Astrophysicist turned software developer.
+          I am Simonas Stonkus, an Astrophysicist turned software developer,
+          currently tackling web development through dumb projects like this
+          one.
         </h3>
       </Modal>
       <div className="box">

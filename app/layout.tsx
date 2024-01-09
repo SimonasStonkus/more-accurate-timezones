@@ -5,6 +5,7 @@ import { MantineProvider } from "@mantine/core";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
+import ClockBackground from "./components/ClockBackground/ClockBackground";
 
 export const metadata: Metadata = {
   title: "Seconds from GMT - a timezone calculator",
@@ -22,7 +23,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${inter.className} inter-tnum`}>
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider>
+          <ClockBackground />
+          {children}
+        </MantineProvider>
         <Analytics />
       </body>
     </html>

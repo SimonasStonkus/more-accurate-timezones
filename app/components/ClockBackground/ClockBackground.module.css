@@ -7,7 +7,6 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: cornflowerblue;
   background: linear-gradient(45deg, cornflowerblue, rgb(0, 206, 209) 90%);
 }
 
@@ -21,10 +20,11 @@
   align-items: center;
   justify-content: center;
   background: white;
+  filter: blur(1px);
 }
 
 .clock:before {
-  transform: rotate(var(--initial-rotation));
+  transform: rotate(var(--rotation));
   content: "";
   position: relative;
   background-color: lightslategray;
@@ -35,10 +35,11 @@
   border-radius: 6px;
   transform-origin: 50% 93%;
   animation: rotate 10s linear infinite;
+  z-index: 3;
 }
 
 .clock:after {
-  transform: rotate(calc(var(--initial-rotation)));
+  transform: rotate(calc(var(--rotation)));
   content: "";
   position: relative;
   background-color: lightslategray;
@@ -49,6 +50,7 @@
   border-radius: 6px;
   transform-origin: 50% 92.2%;
   animation: rotate 120s linear infinite;
+  z-index: 3;
 }
 
 @keyframes rotate {
@@ -60,28 +62,38 @@
   }
 }
 
-/* 
-.clock:before {
-  content: "";
-  position: relative;
-  background-color: lightslategray;
-  top: 7px;
-  height: 72px;
-  width: 10px;
-  border-radius: 6px;
-  transform-origin: 50% 93%;
-  animation: rotate 4s linear infinite;
+.marker {
+  position: absolute;
+  background-color: DimGray;
+  width: 4px;
+  height: 15px;
+  border-radius: 2px;
 }
 
-.clock:after {
-  content: "";
-  position: relative;
-  background-color: red;
-  top: 15px;
-  height: 64px;
-  width: 10px;
-  border-radius: 6px;
-  transform-origin: 50% 92.2%;
-  animation: rotate 60s linear infinite;
+.marker.top {
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
 }
-*/
+
+.marker.right {
+  top: 50%;
+  right: 55px;
+  width: 15px;
+  height: 4px;
+  transform: translateY(-50%);
+}
+
+.marker.bottom {
+  bottom: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.marker.left {
+  top: 50%;
+  left: 55px;
+  width: 15px;
+  height: 4px;
+  transform: translateY(-50%);
+}

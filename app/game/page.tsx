@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Slider, Button } from "@mantine/core";
 import data from "./../api/data/world_cities_list.json";
 import Link from "next/link";
-import ClockBackground from "../components/ClockBackground";
 
 export default function Page() {
   const [selectedTime, setSelectedTime] = useState(0);
@@ -67,8 +66,7 @@ export default function Page() {
   }, [scoreChanged]);
   //TODO: add mid round score display
   return (
-    <div className="container">
-      <ClockBackground />
+    <>
       <div className="Game">
         <Link href="/">
           {" "}
@@ -154,6 +152,6 @@ export default function Page() {
         <h2>Your final score is {score.toFixed(0)}</h2>
         <Button onClick={beginGame}> Try again!</Button>
       </div>
-    </div>
+    </>
   );
 }

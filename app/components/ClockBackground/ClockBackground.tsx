@@ -1,3 +1,4 @@
+"use client";
 import classes from "./ClockBackground.module.css";
 import { useState, useEffect, memo } from "react";
 
@@ -23,15 +24,26 @@ const ClockBackground = memo(function ClockBackground() {
   return (
     <>
       <div className={classes.container}>
-        {rotations.map((rotation, index) => (
+        {rotations.map((rotate, index) => (
           <div
-            key={index}
             className={classes.clock}
             style={{
               transform: `rotate(${index}deg)`,
-              filter: "blur(1.5px)",
             }}
-          ></div>
+          >
+            <div style={{ transform: `rotate(${-index}deg)` }}>
+              <div className={`${classes.marker} ${classes.top}`} />
+            </div>
+            <div style={{ transform: `rotate(${-index}deg)` }}>
+              <div className={`${classes.marker} ${classes.right}`} />
+            </div>
+            <div style={{ transform: `rotate(${-index}deg)` }}>
+              <div className={`${classes.marker} ${classes.bottom}`} />
+            </div>
+            <div style={{ transform: `rotate(${-index}deg)` }}>
+              <div className={`${classes.marker} ${classes.left}`} />
+            </div>
+          </div>
         ))}
       </div>
     </>

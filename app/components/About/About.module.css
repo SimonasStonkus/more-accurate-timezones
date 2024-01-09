@@ -1,0 +1,6 @@
+.about {
+  display: flex;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}

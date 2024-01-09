@@ -11,7 +11,7 @@ const ClockBackground = memo(function ClockBackground() {
         Array.from({
           length:
             Math.floor(window.innerWidth / 190) *
-            Math.floor(document.documentElement.clientHeight / 190),
+            Math.floor(window.innerHeight / 190),
         })
       );
     }

@@ -75,11 +75,24 @@ export default function Page() {
           <Button color="orange">Back to main</Button>{" "}
         </Link>
       </div>
-      <div className="biggerBox" style={{ display: hideMe ? "none" : "block" }}>
+      <div
+        className="box"
+        style={{
+          display: hideMe ? "none" : "block",
+        }}
+      >
         <h1> Guess the timezone!</h1>
         <Button onClick={beginGame}>Start Game</Button>
       </div>
-      <div className="biggerBox" style={{ display: showMe ? "block" : "none" }}>
+      <div
+        className="box"
+        style={{
+          width: "100%",
+          minWidth: "65vw",
+          maxWidth: "500px",
+          display: showMe ? "block" : "none",
+        }}
+      >
         <div
           style={{
             justifyContent: "space-between",
@@ -93,7 +106,7 @@ export default function Page() {
             Current score: {score.toFixed(0)} (+{(score - prevScore).toFixed(0)}
             )
           </span>
-          <div>Game count: {gameCounter}</div>
+          <span>Game count: {gameCounter}</span>
         </div>
         <h1> Guess the timezone!</h1>
         <h2 style={{ paddingBottom: "20px" }}> City is {randomCity}</h2>{" "}
@@ -129,8 +142,13 @@ export default function Page() {
         <Button onClick={getRandomCity}> Next city</Button>
       </div>
       <div
-        className="biggerBox"
-        style={{ display: showResult ? "block" : "none" }}
+        className="box"
+        style={{
+          width: "100%",
+          minWidth: "65vw",
+          maxWidth: "500px",
+          display: showResult ? "block" : "none",
+        }}
       >
         <h1> Guess the timezone!</h1>
         <h2>Your final score is {score.toFixed(0)}</h2>

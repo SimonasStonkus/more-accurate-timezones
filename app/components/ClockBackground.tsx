@@ -7,14 +7,11 @@ const ClockBackground = memo(function ClockBackground() {
   useEffect(() => {
     function handleResize() {
       setRotations(
-        Array.from(
-          {
-            length:
-              Math.floor(window.innerWidth / 170 - 20) *
-              Math.floor(window.innerHeight / 170 - 20),
-          },
-          () => Math.random() * 360
-        )
+        Array.from({
+          length:
+            Math.floor(window.innerWidth / 190) *
+            Math.floor(window.innerHeight / 190),
+        })
       );
     }
     handleResize();
@@ -31,7 +28,7 @@ const ClockBackground = memo(function ClockBackground() {
             key={index}
             className={classes.clock}
             style={{
-              transform: `rotate(${rotation}deg)`,
+              transform: `rotate(${index}deg)`,
               filter: "blur(1.5px)",
             }}
           ></div>
@@ -40,4 +37,5 @@ const ClockBackground = memo(function ClockBackground() {
     </>
   );
 });
+
 export default ClockBackground;

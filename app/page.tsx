@@ -6,9 +6,9 @@ import Link from "next/link";
 import ClockBackground from "./components/ClockBackground";
 
 export default function Page() {
-  const [longitude, setLongitude] = useState(String);
-  const [longitudeMinutes, setLongitudeMinutes] = useState(String);
-  const [longitudeHours, setLongitudeHours] = useState(String);
+  type Time = { seconds?: string; minutes?: string; hours?: string };
+
+  const [longitudeTime, setLongitudeTime] = useState<Time>({});
   const [showMe, setShowMe] = useState(Boolean);
   const [showMeError, setShowMeError] = useState(Boolean);
 
@@ -18,26 +18,24 @@ export default function Page() {
         setShowMeError(true);
       }
     });
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        console.log(position.coords.longitude);
         setShowMe(true);
+
         if (position.coords.longitude < 0) {
-          setLongitude((position.coords.longitude * 240).toFixed(3));
-          setLongitudeMinutes(
-            ((position.coords.longitude * 240) / 60).toFixed(3)
-          );
-          setLongitudeHours(
-            ((position.coords.longitude * 240) / 60 / 60).toFixed(3)
-          );
+          setLongitudeTime({
+            seconds: (position.coords.longitude * 240).toFixed(3),
+            minutes: ((position.coords.longitude * 240) / 60).toFixed(3),
+            hours: ((position.coords.longitude * 240) / 60 / 60).toFixed(3),
+          });
         } else {
-          setLongitude("+" + (position.coords.longitude * 240).toFixed(3));
-          setLongitudeMinutes(
-            "+" + ((position.coords.longitude * 240) / 60).toFixed(3)
-          );
-          setLongitudeHours(
-            "+" + ((position.coords.longitude * 240) / 60 / 60).toFixed(3)
-          );
+          setLongitudeTime({
+            seconds: "+" + (position.coords.longitude * 240).toFixed(3),
+            minutes: "+" + ((position.coords.longitude * 240) / 60).toFixed(3),
+            hours:
+              "+" + ((position.coords.longitude * 240) / 60 / 60).toFixed(3),
+          });
         }
       });
     }
@@ -104,7 +102,7 @@ export default function Page() {
           }}
         >
           {" "}
-          Your timezone is GMT {longitude} seconds
+          Your timezone is GMT {longitudeTime["seconds"]} seconds
         </h3>
         <h3
           id="timezone"
@@ -113,7 +111,7 @@ export default function Page() {
           }}
         >
           {" "}
-          Or GMT {longitudeMinutes} minutes
+          Or GMT {longitudeTime["minutes"]} minutes
         </h3>
         <h3
           id="timezone"
@@ -122,7 +120,7 @@ export default function Page() {
           }}
         >
           {" "}
-          Or GMT {longitudeHours} hours
+          Or GMT {longitudeTime["hours"]} hours
         </h3>
       </div>
     </div>

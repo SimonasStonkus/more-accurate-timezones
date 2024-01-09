@@ -26,6 +26,7 @@ const ClockBackground = memo(function ClockBackground() {
       <div className={classes.container}>
         {rotations.map((rotate, index) => (
           <div
+            key={index}
             className={classes.clock}
             style={{
               transform: `rotate(${index}deg)`,
